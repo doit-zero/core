@@ -5,7 +5,17 @@ import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
+    MemberService memberService;
+    
+    
+    // 각각의 테스트를 실행하기 전에 무조건 실행되는 것
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService;
+    }
+    
+    
     @Test
     public void join_test() throws Exception{
     //given

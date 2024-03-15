@@ -6,9 +6,18 @@ import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
-      // OderService의 역할은 할인 정책이 반영된 주문으로 반환하는 것
-      private final MemberRepository memberRepository = new MemoryMemberRepository();
-      private DiscountPolicy discountPolicy;
+
+      // 구체적인 것이 아닌 추상적인 것인 인터페이스에 의존함! 
+      private final MemberRepository memberRepository;
+      private final DiscountPolicy discountPolicy;
+      
+      
+      // orderServiceImpl의 입장에서는 
+      public OrderServiceImpl(MemberRepository memberRepository,DiscountPolicy discountPolicy)
+      {
+            this.memberRepository = memberRepository;
+            this.discountPolicy = discountPolicy;
+      }
 
       @Override
       public Order createOrder(Long memberId, String itemName, int itemPrice) {

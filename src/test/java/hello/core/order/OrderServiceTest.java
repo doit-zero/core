@@ -8,9 +8,16 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
-
+    MemberService memberService;
+    OrderService orderService;
+   
+   // 각각의 테스트를 실행하기 전에 무조건 실행되는 것
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService;
+        OrderService orderService = appConfig.orderService;
+    }
     @Test
     public void 주문_test() throws Exception{
         Long memberId = 1L;
