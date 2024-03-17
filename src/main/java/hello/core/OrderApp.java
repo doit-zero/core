@@ -7,16 +7,23 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
     public static void main(String[] args) {
         
-        AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService;
-        OrderService orderService = appConfig.orderService;
-        
-        // MemberService memberService = new MemberServiceImpl();
-        // OrderService orderService = new OrderServiceImpl();
+//        AppConfig appConfig = new AppConfig();
+//        MemberService memberService = appConfig.memberService();
+//        OrderService orderService = appConfig.orderService();
+//
+//         MemberService memberService = new MemberServiceImpl();
+//         OrderService orderService = new OrderServiceImpl();
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        OrderService orderService = applicationContext.getBean("orderService",OrderService.class);
+        MemberService memberService = applicationContext.getBean("memberService",MemberService.class);
+
 
         Long memberId = 1l;
         Member member = new Member(memberId,"TestMember", Grade.VIP);

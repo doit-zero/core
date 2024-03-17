@@ -13,7 +13,7 @@ class RateDiscountPolicyTest {
      DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
      @Test
-     @DisplayName("10%할인 가격인지 확인")
+     @DisplayName("VIP고객이 10%할인 가격 할인을 받는지 확인")
      public void vip_o_test() throws Exception{
         Member member = new Member(1L,"test",Grade.VIP);
         int discount = discountPolicy.discount(member,10000);
@@ -21,7 +21,7 @@ class RateDiscountPolicyTest {
      }
     // 성공 테스트도 중요하지만 꼭 실패 테스트도 만들어야한다.
     @Test
-    @DisplayName("10%할인 가격인지 확인")
+    @DisplayName("Basic 고객은 할인은 못 받는지 확인")
     public void vip_x_test() throws Exception{
     //given
         Member member = new Member(2L,"test2",Grade.BASIC);

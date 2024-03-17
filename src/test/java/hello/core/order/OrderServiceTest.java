@@ -1,10 +1,12 @@
 package hello.core.order;
 
+import hello.core.AppConfig;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
@@ -15,8 +17,8 @@ public class OrderServiceTest {
     @BeforeEach
     public void beforeEach(){
         AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService;
-        OrderService orderService = appConfig.orderService;
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
     }
     @Test
     public void 주문_test() throws Exception{
