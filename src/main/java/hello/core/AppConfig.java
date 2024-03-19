@@ -19,16 +19,19 @@ public class AppConfig {
     // 컨테이너에는 메소드 이름이 빈으로 등록됨
     @Bean
     public MemberService memberService() {
-          return new MemberServiceImpl(memberRepository());
+        System.out.println("call AppConfig.memberService");
+        return new MemberServiceImpl(memberRepository());
     }
     @Bean
     public MemberRepository memberRepository() {
-          return new MemoryMemberRepository();
+        System.out.println("call AppConfig.memberRepository");
+        return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {
-          return new OrderServiceImpl(memberRepository(),discountPolicy());
+        System.out.println("call AppConfig.orderService");
+        return new OrderServiceImpl(memberRepository(),discountPolicy());
     }
 
     @Bean
