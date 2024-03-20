@@ -4,7 +4,10 @@ import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
       // 구체적인 것이 아닌 추상적인 것인 인터페이스에 의존함! 
@@ -12,7 +15,9 @@ public class OrderServiceImpl implements OrderService{
       private final DiscountPolicy discountPolicy;
       
       
-      // orderServiceImpl의 입장에서는 
+      // orderServiceImpl의 입장에서는
+
+      @Autowired
       public OrderServiceImpl(MemberRepository memberRepository,DiscountPolicy discountPolicy)
       {
             this.memberRepository = memberRepository;
