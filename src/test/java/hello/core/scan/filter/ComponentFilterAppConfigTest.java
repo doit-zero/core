@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class ComponentFilterAppConfigTest {
 
     @Test
-    void filterScan() throws Exception{
+    void  filterScan() throws Exception{
 
         ApplicationContext ac = new AnnotationConfigApplicationContext(ComponentFilterAppConfig.class);
         BeanA beanA = ac.getBean("beanA", BeanA.class);

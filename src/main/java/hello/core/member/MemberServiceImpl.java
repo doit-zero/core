@@ -1,6 +1,7 @@
 package hello.core.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,8 +15,8 @@ public class MemberServiceImpl implements MemberService{
     // 어떤 객체가 주입 될지는 오직 AppConfig에서 결정된다.
     // MemverServiceImpl은 이제부터 의존관계에 대한 고민은 외부에 맡기고, 실행에만 집중하면 됨!!
 
-    @Autowired
-    public MemberServiceImpl(MemberRepository memberRepository){
+
+    public MemberServiceImpl(@Qualifier("memoryMemberRepository")MemberRepository memberRepository){
         this.memberRepository = memberRepository;
     }
 
